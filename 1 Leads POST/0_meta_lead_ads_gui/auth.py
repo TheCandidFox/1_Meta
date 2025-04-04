@@ -12,7 +12,7 @@ from utils import save_config
 APP_ID = '831809621504600'
 APP_SECRET = '875adfa3f56fe47586f232f14cd411c5'
 REDIRECT_URI = 'https://localhost:5000/'
-SCOPES = ['pages_show_list', 'ads_management', 'leads_retrieval', 'pages_read_engagement', 'business_management']
+SCOPES = ['pages_show_list', 'ads_management', 'business_management', 'leads_retrieval', 'pages_read_engagement', 'pages_manage_ads']
 AUTH_URL = f"https://www.facebook.com/v22.0/dialog/oauth?client_id={APP_ID}&redirect_uri={urllib.parse.quote(REDIRECT_URI)}&scope={','.join(SCOPES)}&response_type=code"
 
 TOKEN_URL = "https://graph.facebook.com/v22.0/oauth/access_token"
