@@ -1,3 +1,5 @@
+# Token Endpoint: https://developers.facebook.com/tools/explorer/
+
 import requests
 
 ACCESS_TOKEN = 'EAAL0hsUCslgBOx7ZBgA3CMVm8zP6bQJ7A5AfXr7YJo99WmZB5MBSfpSjifNcgkI0YxGR9Oj6vpwifcDZBjRGs9jXzKd9KbkPw4lIV9kaPLAMTscee2riXRKbDo1ycFh8MfyZBjToamKJubMYqAwSUXZB4y3jy1ZBWZCbmZBFYGnF8alZBdFr5CIsC36Xns3nNkTm1Gntg1Do1Nxr9aKx88eS80SPRPcOgYQuaeZCMI'
