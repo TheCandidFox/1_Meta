@@ -1,20 +1,25 @@
 import requests
-from utils import load_config
+import json
 
-BASE_URL = "https://graph.facebook.com/v22.0"
+GRAPH_API_URL = "https://graph.facebook.com/v22.0"
 
-def get_headers():
-    token = load_config().get('access_token')
-    return {'Authorization': f'Bearer {token}'}
+def get_pages(access_token):
+    url = f"{GRAPH_API_URL}/me/accounts?fields=name,id,access_token"
+    headers = {"Authorization": f"Bearer {access_token}"}
+    res = requests.get(url, headers=headers)
+    res.raise_for_status()
+    return res.json().get("data", [])
 
-def get_pages():
-    res = requests.get(f"{BASE_URL}/me/accounts", headers=get_headers())
-    return res.json().get('data', [])
+def get_forms(page_id, page_access_token):
+    url = f"{GRAPH_API_URL}/{page_id}/leadgen_forms?fields=id,name"
+    headers = {"Authorization": f"Bearer {page_access_token}"}
+    res = requests.get(url, headers=headers)
+    res.raise_for_status()
+    return res.json().get("data", [])
 
-def get_forms(page_id):
-    res = requests.get(f"{BASE_URL}/{page_id}/leadgen_forms", headers=get_headers())
-    return res.json().get('data', [])
-
-def get_recent_leads(form_id, limit=3):
-    res = requests.get(f"{BASE_URL}/{form_id}/leads", params={'limit': limit}, headers=get_headers())
-    return res.json().get('data', [])
+def get_recent_leads(form_id, access_token):
+    url = f"{GRAPH_API_URL}/{form_id}/leads?limit=3"
+    headers = {"Authorization": f"Bearer {access_token}"}
+    res = requests.get(url, headers=headers)
+    res.raise_for_status()
+    return res.json().get("data", [])
